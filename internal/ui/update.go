@@ -31,6 +31,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 			} else{
 				m.selected[m.cursor] = struct{}{}
 			}
+
+		case "right", "l", "n", "tab":
+					m.activeTab = min(m.activeTab+1, len(m.tabs)-1)
+					return m, nil
+		case "left", "h", "p", "shift+tab":
+			m.activeTab = max(m.activeTab-1, 0)
+			return m, nil
 		}
 
 		
