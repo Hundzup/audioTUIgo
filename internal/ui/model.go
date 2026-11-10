@@ -13,6 +13,9 @@ type Model struct {
 	choices []string
   cursor  int
 	selected map[int]struct{}
+
+	width int
+	height int
 }
 
 

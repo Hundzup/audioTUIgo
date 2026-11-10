@@ -39,8 +39,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 			m.activeTab = max(m.activeTab-1, 0)
 			return m, nil
 		}
-
 		
+	case tea.WindowSizeMsg:
+		m.width = msg.Width
+		m.height = msg.Height
 	}
 	return m, nil
 }

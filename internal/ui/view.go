@@ -43,7 +43,7 @@ func (m Model) View() tea.View {
 	row := lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...)
 	doc.WriteString(row)
 	doc.WriteString("\n")
-	doc.WriteString(s.window.Width((lipgloss.Width(row))).Render(m.tabContent[m.activeTab]))
+	doc.WriteString(s.window.Width(m.width).Render(m.tabContent[m.activeTab]))
 	
 	v := tea.NewView(s.doc.Render(doc.String()))
 	v.AltScreen = true
