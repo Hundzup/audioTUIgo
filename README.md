@@ -6,7 +6,7 @@ UI
 TODO:
  - [ ] Create base types
  - [ ] Fake player
- - [ ] TUI
+ - [x] TUI
  - [ ] Creating playlists
  - [ ] Progress bar
  - [ ] Key bindings
