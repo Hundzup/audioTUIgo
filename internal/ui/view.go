@@ -3,10 +3,10 @@ package ui
 import (
 	// "fmt"
 	"strings"
-  tea "charm.land/bubbletea/v2"
- 	"charm.land/lipgloss/v2"
-)
 
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
+)
 
 func (m Model) View() tea.View {
 	if m.styles == nil {
@@ -40,14 +40,21 @@ func (m Model) View() tea.View {
 		renderedTabs = append(renderedTabs, style.Render(t))
 	}
 
-	row := lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...)
-	doc.WriteString(row)
+	header := lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...)
+	body := s.body.
+		Width(m.width).
+		Height(20).
+		Render(m.tabContent[m.activeTab])
+	footer := s.footer.Render("footer")
+
+	doc.WriteString(header)
 	doc.WriteString("\n")
-	doc.WriteString(s.window.Width(m.width).Render(m.tabContent[m.activeTab]))
-	
+	doc.WriteString(body)
+	doc.WriteString("\n")
+	doc.WriteString(footer)
+
 	v := tea.NewView(s.doc.Render(doc.String()))
 	v.AltScreen = true
-	
+
 	return v
 }
-

@@ -5,32 +5,31 @@ import (
 )
 
 type Model struct {
-	tabs []string
+	tabs       []string
 	tabContent []string
-	styles *styles
-	activeTab int
+	styles     *styles
+	activeTab  int
 
-	choices []string
-  cursor  int
+	choices  []string
+	cursor   int
 	selected map[int]struct{}
 
-	width int
+	width  int
 	height int
 }
 
-
-func InitialModel() Model{
+func InitialModel() Model {
 	tabs := []string{"Library", "Files", "PlayLists"}
 	tabContent := []string{"Scaned music", "Brose files", "Place for created playlists"}
 	return Model{
-		choices: []string{"Something", "Kall"},
-		selected: make(map[int]struct{}),
-		tabs: tabs,
+		choices:    []string{"Something", "Kall"},
+		selected:   make(map[int]struct{}),
+		tabs:       tabs,
 		tabContent: tabContent,
-		styles: newStyles(true),
+		styles:     defaultStyles(),
 	}
 }
 
-func (m Model) Init() tea.Cmd{
+func (m Model) Init() tea.Cmd {
 	return nil
 }

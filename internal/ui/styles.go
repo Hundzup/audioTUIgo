@@ -11,6 +11,8 @@ type styles struct {
 	inactiveTab lipgloss.Style
 	activeTab   lipgloss.Style
 	window      lipgloss.Style
+	body        lipgloss.Style
+	footer      lipgloss.Style
 }
 
 func newStyles(bgIsDark bool) *styles {
@@ -44,4 +46,26 @@ func tabBorderWithBottom(left, middle, right string) lipgloss.Border {
 	border.Bottom = middle
 	border.BottomRight = right
 	return border
+}
+
+func defaultStyles() *styles {
+	return &styles{
+		doc: lipgloss.NewStyle().Padding(0, 1),
+		activeTab: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("205")),
+		inactiveTab: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("62")).
+			Padding(1, 2),
+		body: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("62")).
+			Padding(1, 2),
+		footer: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("241")).
+			Foreground(lipgloss.Color("243")).
+			Padding(0, 1),
+	}
 }
