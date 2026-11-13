@@ -32,12 +32,15 @@ func (m Model) View() tea.View {
 	header := lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
 		Width(m.width - 1).
+		Height(int(float64(m.height)*0.05)).
 		Render(lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...))
 	body := s.body.
 		Width(m.width - 1).
-		Height(m.height - 15).
+		// Height(int(float64(m.height)*0.80)).
+		Height(m.height - 2*lipgloss.Height(header)).
 		Render(m.tabContent[m.activeTab])
 	footer := s.footer.
+		Height(int(float64(m.height)*0.05)).
 		Width(m.width - 1).
 		Render("footer")
 
