@@ -15,49 +15,17 @@ type styles struct {
 	footer      lipgloss.Style
 }
 
-func newStyles(bgIsDark bool) *styles {
-	lightDark := lipgloss.LightDark(bgIsDark)
-
-	inactiveTabBorder := tabBorderWithBottom("┴", "─", "┴")
-	activeTabBorder := tabBorderWithBottom("┘", " ", "└")
-	highlightColor := lightDark(lipgloss.Color("#874BFD"), lipgloss.Color("#7D56F4"))
-
-	s := new(styles)
-	s.doc = lipgloss.NewStyle().
-		Padding(1, 2, 1, 2)
-	s.inactiveTab = lipgloss.NewStyle().
-		Border(inactiveTabBorder, true).
-		BorderForeground(highlightColor).
-		Padding(0, 1)
-	s.activeTab = s.inactiveTab.
-		Border(activeTabBorder, true)
-	s.window = lipgloss.NewStyle().
-		BorderForeground(highlightColor).
-		Padding(2, 0).
-		Align(lipgloss.Center).
-		Border(lipgloss.NormalBorder()).
-		UnsetBorderTop()
-	return s
-}
-
-func tabBorderWithBottom(left, middle, right string) lipgloss.Border {
-	border := lipgloss.RoundedBorder()
-	border.BottomLeft = left
-	border.Bottom = middle
-	border.BottomRight = right
-	return border
-}
-
 func defaultStyles() *styles {
 	return &styles{
 		doc: lipgloss.NewStyle().Padding(0, 1),
 		activeTab: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Color("205")),
+			BorderForeground(lipgloss.Color("White")).
+			Padding(0, 2),
 		inactiveTab: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("62")).
-			Padding(1, 2),
+			Padding(0, 2),
 		body: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("62")).
@@ -66,6 +34,6 @@ func defaultStyles() *styles {
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("241")).
 			Foreground(lipgloss.Color("243")).
-			Padding(0, 1),
+			Padding(1, 1),
 	}
 }

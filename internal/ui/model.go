@@ -19,8 +19,8 @@ type Model struct {
 }
 
 func InitialModel() Model {
-	tabs := []string{"Library", "Files", "PlayLists"}
-	tabContent := []string{"Scaned music", "Brose files", "Place for created playlists"}
+	tabs := []string{"Library", "Files", "PlayLists", "Recommendation"}
+	tabContent := []string{"Scaned music", "Brose files", "Place for created playlists", "Хуй тебе а не рекоммендации"}
 	return Model{
 		choices:    []string{"Something", "Kall"},
 		selected:   make(map[int]struct{}),

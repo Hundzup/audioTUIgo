@@ -20,32 +20,26 @@ func (m Model) View() tea.View {
 
 	for i, t := range m.tabs {
 		var style lipgloss.Style
-		isFirst, isLast, isActive := i == 0, i == len(m.tabs)-1, i == m.activeTab
+		isActive := i == m.activeTab
 		if isActive {
 			style = s.activeTab
 		} else {
 			style = s.inactiveTab
 		}
-		border, _, _, _, _ := style.GetBorder()
-		if isFirst && isActive {
-			border.BottomLeft = "│"
-		} else if isFirst && !isActive {
-			border.BottomLeft = "├"
-		} else if isLast && isActive {
-			border.BottomRight = "│"
-		} else if isLast && !isActive {
-			border.BottomRight = "┤"
-		}
-		style = style.Border(border)
 		renderedTabs = append(renderedTabs, style.Render(t))
 	}
 
-	header := lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...)
+	header := lipgloss.NewStyle().
+		Border(lipgloss.RoundedBorder()).
+		Width(m.width - 1).
+		Render(lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...))
 	body := s.body.
-		Width(m.width).
-		Height(20).
+		Width(m.width - 1).
+		Height(m.height - 15).
 		Render(m.tabContent[m.activeTab])
-	footer := s.footer.Render("footer")
+	footer := s.footer.
+		Width(m.width - 1).
+		Render("footer")
 
 	doc.WriteString(header)
 	doc.WriteString("\n")
