@@ -5,15 +5,23 @@ import (
 )
 
 type Model struct {
+	//super base + header
 	tabs       []string
 	tabContent []string
 	styles     *styles
 	activeTab  int
 
+	//body active tab: need to seletc some thing (like waves)
+	firstWindow  []string
+	secondWindow []string
+	thirdWindow  []string
+
+	//fuck
 	choices  []string
 	cursor   int
 	selected map[int]struct{}
 
+	//some consts
 	width  int
 	height int
 }
