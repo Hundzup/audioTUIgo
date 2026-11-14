@@ -4,7 +4,7 @@ Light audioplayer
 
 UI
 TODO:
- - [ ] Create base types
+ - [x] Create base types
  - [ ] Fake player
  - [x] TUI
  - [ ] Creating playlists
