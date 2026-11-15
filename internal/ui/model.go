@@ -12,9 +12,8 @@ type Model struct {
 	activeTab  int
 
 	//body active tab: need to seletc some thing (like waves)
-	firstWindow  []string
-	secondWindow []string
-	thirdWindow  []string
+	layers []string
+	activeLayer int
 
 	//fuck
 	choices  []string
@@ -29,12 +28,15 @@ type Model struct {
 func InitialModel() Model {
 	tabs := []string{"Library", "Files", "PlayLists", "Recommendation"}
 	tabContent := []string{"Scaned music", "Brose files", "Place for created playlists", "Хуй тебе а не рекоммендации"}
+
+	layers := []string{"author", "alboms", "tracks"}
 	return Model{
 		choices:    []string{"Something", "Kall"},
 		selected:   make(map[int]struct{}),
 		tabs:       tabs,
 		tabContent: tabContent,
 		styles:     defaultStyles(),
+		layers:     layers,
 	}
 }
 
