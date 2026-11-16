@@ -29,12 +29,29 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			} else {
 				m.selected[m.cursor] = struct{}{}
 			}
+		
+		case "f1":
+			m.activeTab = 0
+			return m, nil
+
+		case "f2":
+			m.activeTab = 1
+			return m, nil
+
+		case "f3":
+			m.activeTab = 2
+			return m, nil
+
+		case "f4":
+			m.activeTab = 3
+			return m, nil
+
 
 		case "right", "l", "n", "tab":
-			m.activeTab = min(m.activeTab+1, len(m.tabs)-1)
+			m.activeLayer = min(m.activeLayer+1, len(m.layers)-1)
 			return m, nil
 		case "left", "h", "p", "shift+tab":
-			m.activeTab = max(m.activeTab-1, 0)
+			m.activeLayer = max(m.activeLayer-1, 0)
 			return m, nil
 		}
 

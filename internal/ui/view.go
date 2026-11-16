@@ -36,9 +36,9 @@ func (m Model) View() tea.View {
 		var style lipgloss.Style
 		isActive := i == m.activeLayer
 		if isActive{
-			style = s.activeTab
+			style = s.activeLayer
 		} else {
-			style = s.inactiveTab
+			style = s.inactiveLayer
 		}
 		renderedLayers = append(renderedLayers, style.Render(t))
 	}

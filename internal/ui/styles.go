@@ -13,6 +13,8 @@ type styles struct {
 	window      lipgloss.Style
 	body        lipgloss.Style
 	footer      lipgloss.Style
+	activeLayer lipgloss.Style
+	inactiveLayer lipgloss.Style
 }
 
 func defaultStyles() *styles {
@@ -35,5 +37,12 @@ func defaultStyles() *styles {
 			BorderForeground(lipgloss.Color("241")).
 			Foreground(lipgloss.Color("243")).
 			Padding(1, 1),
+		activeLayer: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("Red")).
+			Padding(2, 2),
+		inactiveLayer: lipgloss.NewStyle().
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("Blue")),
 	}
 }
