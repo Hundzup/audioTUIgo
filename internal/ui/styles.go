@@ -28,10 +28,10 @@ func defaultStyles() *styles {
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("62")).
 			Padding(0, 2),
-		body: lipgloss.NewStyle().
-			Border(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Color("62")).
-			Padding(1, 2),
+		// body: lipgloss.NewStyle().
+		// 	Border(lipgloss.RoundedBorder()).
+		// 	BorderForeground(lipgloss.Color("62")).
+		// 	Padding(0, 0),
 		footer: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("241")).
@@ -39,7 +39,7 @@ func defaultStyles() *styles {
 			Padding(1, 1),
 		activeLayer: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Color("Red")).
+			BorderForeground(lipgloss.Red).
 			Padding(2, 2),
 		inactiveLayer: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
