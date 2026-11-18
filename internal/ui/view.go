@@ -2,6 +2,7 @@ package ui
 
 import (
 	// "fmt"
+
 	"strings"
 
 	tea "charm.land/bubbletea/v2"
@@ -22,7 +23,7 @@ func (m Model) View() tea.View {
 
 	for i, t := range m.tabs {
 
-	  var style lipgloss.Style
+		var style lipgloss.Style
 		isActive := i == m.activeTab
 		if isActive {
 			style = s.activeTab
@@ -32,26 +33,34 @@ func (m Model) View() tea.View {
 		renderedTabs = append(renderedTabs, style.Render(t))
 	}
 
-	for i, t := range m.layers {
-		var style lipgloss.Style
-		isActive := i == m.activeLayer
-		if isActive{
-			style = s.activeLayer
-		} else {
-			style = s.inactiveLayer
-		}
-		renderedLayers = append(renderedLayers, style.Render(t))
-	}
-
-
-
 	header := lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
 		Width(m.width - 1).
 		Height(int(float64(m.height) * 0.05)).
 		Render(lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...))
 
-	if (m.activeTab == 0){
+	for i, t := range m.layers {
+		var style lipgloss.Style
+		isActive := i == m.activeLayer
+		if isActive {
+			style = s.activeLayer.
+				Height(m.height - 2*lipgloss.Height(header)).
+				Width(int(float64(m.width)*0.4) - 1)
+		} else {
+			style = s.inactiveLayer.
+				Height(m.height - 2*lipgloss.Height(header)).
+				Width(int(float64(m.width) * 0.3))
+		}
+		if i == 0 {
+
+		}
+		renderedLayers = append(renderedLayers, style.Render(t))
+	}
+
+	// l := list.New("seven", "six seven")
+	// m.layers[0] = l
+
+	if m.activeTab == 0 {
 		customRender = lipgloss.JoinHorizontal(lipgloss.Right, renderedLayers...)
 	} else {
 		customRender = m.tabContent[m.activeTab]
@@ -61,6 +70,7 @@ func (m Model) View() tea.View {
 		Width(m.width - 1).
 		Height(m.height - 2*lipgloss.Height(header)).
 		Render(customRender)
+
 		// Render(m.tabContent[m.activeTab])
 	footer := s.footer.
 		Height(int(float64(m.height) * 0.05)).

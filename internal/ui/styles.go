@@ -6,14 +6,14 @@ import (
 )
 
 type styles struct {
-	doc         lipgloss.Style
-	highlight   lipgloss.Style
-	inactiveTab lipgloss.Style
-	activeTab   lipgloss.Style
-	window      lipgloss.Style
-	body        lipgloss.Style
-	footer      lipgloss.Style
-	activeLayer lipgloss.Style
+	doc           lipgloss.Style
+	highlight     lipgloss.Style
+	inactiveTab   lipgloss.Style
+	activeTab     lipgloss.Style
+	window        lipgloss.Style
+	body          lipgloss.Style
+	footer        lipgloss.Style
+	activeLayer   lipgloss.Style
 	inactiveLayer lipgloss.Style
 }
 
@@ -39,8 +39,8 @@ func defaultStyles() *styles {
 			Padding(1, 1),
 		activeLayer: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Red).
-			Padding(2, 2),
+			BorderForeground(lipgloss.Red),
+		// Padding(2, 2),
 		inactiveLayer: lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("Blue")),
