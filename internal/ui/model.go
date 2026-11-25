@@ -12,8 +12,9 @@ type Model struct {
 	activeTab  int
 
 	//body active tab: need to seletc some thing (like waves)
-	layers []string
+	layers      []string
 	activeLayer int
+	authors     []string
 
 	//fuck
 	choices  []string
@@ -30,6 +31,7 @@ func InitialModel() Model {
 	tabContent := []string{"Scaned music", "Brose files", "Place for created playlists", "Хуй тебе а не рекоммендации"}
 
 	layers := []string{"author", "alboms", "tracks"}
+	authors := []string{"first", "second", "third"}
 	return Model{
 		choices:    []string{"Something", "Kall"},
 		selected:   make(map[int]struct{}),
@@ -37,6 +39,7 @@ func InitialModel() Model {
 		tabContent: tabContent,
 		styles:     defaultStyles(),
 		layers:     layers,
+		authors:    authors,
 	}
 }
 

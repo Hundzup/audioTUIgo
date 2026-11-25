@@ -9,6 +9,23 @@ import (
 	"charm.land/lipgloss/v2"
 )
 
+func (m Model) layerContent(i int, title string) string {
+	if i != 0 {
+		return title
+	}
+
+	var b strings.Builder
+	b.WriteString(title)
+	b.WriteString("\n")
+
+	for _, a := range m.authors {
+		style := lipgloss.NewStyle().Foreground(lipgloss.Color("241")).Background(lipgloss.Color("62"))
+		b.WriteString(style.Render(a))
+		b.WriteString("\n")
+	}
+	return b.String()
+}
+
 func (m Model) View() tea.View {
 	if m.styles == nil {
 		return tea.NewView("")
@@ -54,7 +71,7 @@ func (m Model) View() tea.View {
 		if i == 0 {
 
 		}
-		renderedLayers = append(renderedLayers, style.Render(t))
+		renderedLayers = append(renderedLayers, style.Render(m.layerContent(i, t)))
 	}
 
 	// l := list.New("seven", "six seven")
